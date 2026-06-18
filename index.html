@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Manja ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:linear-gradient(to bottom,#020111,#0a0a52,#000);
+color:white;
+overflow-x:hidden;
+}
+
+/* STARS */
+
+#stars{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-3;
+}
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:.2;}
+to{opacity:1;}
+}
+
+/* MOON */
+
+.moon{
+position:fixed;
+top:50px;
+right:70px;
+width:120px;
+height:120px;
+border-radius:50%;
+background:#fff5c3;
+box-shadow:
+0 0 30px #fff5c3,
+0 0 60px #fff5c3,
+0 0 90px #fff5c3;
+z-index:-2;
+}
+
+/* METEOR */
+
+.meteor{
+position:fixed;
+width:2px;
+height:120px;
+background:linear-gradient(to bottom,white,transparent);
+transform:rotate(45deg);
+pointer-events:none;
+animation:meteor 2s linear forwards;
+}
+
+@keyframes meteor{
+
+from{
+transform:translate(0,0) rotate(45deg);
+opacity:1;
+}
+
+to{
+transform:translate(-500px,500px) rotate(45deg);
+opacity:0;
+}
+
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-size:70px;
+text-shadow:0 0 20px pink;
+}
+
+.hero h2{
+font-size:55px;
+margin:15px 0;
+}
+
+.hero p{
+font-size:22px;
+max-width:800px;
+line-height:1.8;
+}
+
+.btn{
+margin-top:30px;
+padding:15px 35px;
+border:none;
+border-radius:50px;
+font-size:18px;
+background:#ffb3c6;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.08);
+}
+
+.quote{
+margin-top:25px;
+font-size:18px;
+font-style:italic;
+opacity:.85;
+}
+
+/* GALLERY */
+
+.gallery{
+padding:80px 25px;
+}
+
+.gallery h2{
+text-align:center;
+font-size:40px;
+margin-bottom:40px;
+}
+
+.photos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+}
+
+.photos img{
+width:100%;
+border-radius:20px;
+box-shadow:0 0 20px rgba(255,255,255,.15);
+transition:.4s;
+}
+
+.photos img:hover{
+transform:scale(1.05);
+box-shadow:0 0 30px pink;
+}
+
+/* LETTER */
+
+.letter{
+padding:100px 25px;
+max-width:1000px;
+margin:auto;
+text-align:center;
+font-size:22px;
+line-height:2;
+}
+
+.letter h2{
+font-size:45px;
+margin-bottom:40px;
+}
+
+/* FOOTER */
+
+.footer{
+padding:100px 25px;
+text-align:center;
+}
+
+.footer h2{
+font-size:40px;
+margin-bottom:20px;
+}
+
+/* HEARTS */
+
+@keyframes fall{
+
+from{
+transform:translateY(-50px);
+opacity:1;
+}
+
+to{
+transform:translateY(110vh);
+opacity:0;
+}
+
+}
+
+/* MUSIC BUTTON */
+
+#musicBtn{
+
+position:fixed;
+bottom:25px;
+right:25px;
+
+padding:15px 25px;
+
+border:none;
+border-radius:50px;
+
+background:#ffb3c6;
+color:#111;
+
+font-weight:bold;
+font-size:16px;
+
+cursor:pointer;
+
+box-shadow:
+0 0 15px pink,
+0 0 30px pink;
+
+transition:.3s;
+
+z-index:9999;
+
+}
+
+#musicBtn:hover{
+transform:scale(1.1);
+background:#ffc8dd;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:42px;
+}
+
+.hero h2{
+font-size:34px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+.gallery h2{
+font-size:28px;
+}
+
+.letter{
+font-size:18px;
+}
+
+.moon{
+width:80px;
+height:80px;
+right:20px;
+top:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+<source src="music/music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="stars"></div>
+<div class="moon"></div>
+
+<section class="hero">
+
+<h1>🌙 Happy Birthday ❤️</h1>
+
+<h2>Manja Aulia</h2>
+
+<p>
+Malam ini mungkin hanya ulang tahunmu,
+tetapi bagiku ini adalah hari ketika seseorang yang sangat berarti dalam hidupku bertambah usia.
+</p>
+
+<button class="btn" onclick="openLetter()">
+💌 Buka Surat
+</button>
+
+<p class="quote">
+"Di antara semua bintang yang bersinar malam ini, aku tetap memilih kamu."
+</p>
+
+</section>
+
+<section class="gallery">
+
+<h2>🌙 Bintang Terindah di Langitku 🌙</h2>
+
+<div class="photos">
+
+<img src="assets/manja1.jpg">
+<img src="assets/manja2.jpg">
+<img src="assets/manja3.jpg">
+<img src="assets/manja4.jpg">
+<img src="assets/manja5.jpg">
+<img src="assets/manja6.jpg">
+<img src="assets/manja7.jpg">
+<img src="assets/manja8.jpg">
+<img src="assets/manja9.jpg">
+<img src="assets/manja10.jpg">
+<img src="assets/manja11.jpg">
+<img src="assets/manja12.jpg">
+
+</div>
+
+</section>
+
+<section id="surat" class="letter">
+
+<h2>💌 Untuk Manja</h2>
+
+<p>
+
+Selamat ulang tahun, sayangku ❤️
+
+<br><br>
+
+Hari ini adalah hari yang spesial karena seseorang yang sangat berarti dalam hidupku bertambah usia.
+
+Terima kasih sudah hadir dan menjadi bagian dari perjalanan hidupku.
+
+Terima kasih untuk semua tawa, perhatian, dukungan, dan cinta yang selalu kamu berikan.
+
+<br><br>
+
+Di usia yang baru ini, aku berharap semua impian, harapan, dan rencana yang kamu perjuangkan bisa terwujud satu per satu.
+
+Semoga kamu selalu diberi kesehatan, kebahagiaan, kesuksesan, dan dikelilingi oleh orang-orang yang menyayangimu.
+
+<br><br>
+
+Aku mungkin tidak selalu sempurna, tapi aku akan selalu berusaha menjadi seseorang yang bisa menemani dan mendukungmu dalam setiap langkah.
+
+<br><br>
+
+Terima kasih karena sudah menjadi dirimu sendiri.
+
+Aku sangat bersyukur bisa mengenal dan mencintaimu.
+
+<br><br>
+
+Selamat ulang tahun, cintaku.
+
+Semoga hari ini dan hari-hari berikutnya menjadi seindah senyummu.
+
+Aku sayang kamu, hari ini, besok, dan seterusnya ❤️
+
+</p>
+
+</section>
+
+<section class="footer">
+
+<h2>❤️ Love, Nabil ❤️</h2>
+
+<p style="font-size:18px;line-height:2;max-width:700px;margin:auto;">
+Terima kasih telah hadir dalam hidupku.
+Semoga tahun ini menjadi tahun terbaikmu.
+Dan semoga aku masih bisa menjadi bagian dari cerita indahmu.
+🌙✨
+</p>
+
+</section>
+
+<button id="musicBtn" onclick="toggleMusic()">
+🎵 Putar Musik
+</button>
+
+<script>
+
+const music=document.getElementById("bgMusic");
+
+function openLetter(){
+
+document.getElementById("surat").scrollIntoView({
+behavior:'smooth'
+});
+
+music.play();
+
+document.getElementById("musicBtn").innerHTML=
+"⏸ Pause Music";
+
+}
+
+function toggleMusic(){
+
+if(music.paused){
+
+music.play();
+document.getElementById("musicBtn").innerHTML=
+"⏸ Pause Music";
+
+}else{
+
+music.pause();
+document.getElementById("musicBtn").innerHTML=
+"🎵 Putar Musik";
+
+}
+
+}
+
+/* STARS */
+
+for(let i=0;i<300;i++){
+
+let star=document.createElement("div");
+
+star.classList.add("star");
+
+star.style.left=Math.random()*100+"%";
+star.style.top=Math.random()*100+"%";
+
+let size=Math.random()*3+1;
+
+star.style.width=size+"px";
+star.style.height=size+"px";
+
+document.getElementById("stars").appendChild(star);
+
+}
+
+/* HEARTS */
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.style.position="fixed";
+heart.style.left=Math.random()*100+"vw";
+heart.style.top="-50px";
+
+heart.style.fontSize=
+(Math.random()*20+20)+"px";
+
+heart.style.pointerEvents="none";
+
+heart.style.animation=
+"fall 6s linear forwards";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+},900);
+
+/* METEOR */
+
+setInterval(()=>{
+
+let meteor=document.createElement("div");
+
+meteor.classList.add("meteor");
+
+meteor.style.top=
+Math.random()*250+"px";
+
+meteor.style.left=
+(window.innerWidth+100)+"px";
+
+document.body.appendChild(meteor);
+
+setTimeout(()=>{
+meteor.remove();
+},2000);
+
+},4500);
+
+</script>
+
+</body>
+</html>
